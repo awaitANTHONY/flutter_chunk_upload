@@ -1,4 +1,4 @@
-# chunk_upload
+# Flutter Chunk Upload
 
 A new Flutter project.
 
