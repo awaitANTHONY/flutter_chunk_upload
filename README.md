@@ -102,3 +102,38 @@ upload() async {
     }
   }
 ```
+
+design part:
+
+```dart
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                _pickFiles();
+              },
+              child: const Text('Select File'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                upload();
+              },
+              child: const Text('Upload'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+```
