@@ -28,6 +28,15 @@ import 'package:chunked_uploader/chunked_uploader.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 ```
+
+### define variable
+
+```dart
+List<PlatformFile>? _paths;
+String? _extension;
+double progress = 0.0;
+String link = '';
+```
 ### Super simple codes
 
 file picker code:
