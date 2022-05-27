@@ -29,7 +29,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 ```
 
-### define variable
+### Define variable
 
 ```dart
 List<PlatformFile>? _paths;
