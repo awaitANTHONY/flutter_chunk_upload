@@ -7,7 +7,7 @@ so I tried to help all by researching how to upload large files to server using 
 
 ## Getting Started
 
-### Add dependency
+### Add flutter dependency
 
 ```yaml
 dependencies:
@@ -136,4 +136,19 @@ design part:
       ),
     );
   }
+```
+### Laravel(php) backend codes
+
+## Installing Laravel Chunk Upload Package
+
+**1. Install via composer**
+
+```
+composer require pion/laravel-chunk-upload
+```
+
+**2. Publish the config (Optional)**
+
+```
+php artisan vendor:publish --provider="Pion\Laravel\ChunkUpload\Providers\ChunkUploadServiceProvider"
 ```
