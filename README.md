@@ -174,7 +174,7 @@ use Illuminate\Http\UploadedFile;
 use File;
 ```
 
-// rest laravel code:
+Rest of laravel codes:
 $img->insert('public/watermark.png');
 
 ```php
