@@ -53,3 +53,52 @@ void _pickFiles() async {
   }
 }
 ```
+
+Dio and ChunkedUploader:
+
+```dart
+upload() async {
+    if (_paths == null) {
+      showToast('Select a file first.');
+    }
+    var path = _paths![0].path!;
+    String fileName = path.split('/').last;
+    String url = 'https://awaitanthony.com/demo/api/v1/file_upload';
+    ChunkedUploader chunkedUploader = ChunkedUploader(
+      Dio(
+        BaseOptions(
+          baseUrl: url,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Connection': 'Keep-Alive',
+          },
+        ),
+      ),
+    );
+    try {
+      Response? response = await chunkedUploader.upload(
+        fileKey: "file",
+        method: "POST",
+        filePath: path,
+        maxChunkSize: 500000000,
+        path: url,
+        data: {
+          'additional_data': 'hiii',
+        },
+        onUploadProgress: (v) {
+          if (kDebugMode) {
+            print(v);
+          }
+        },
+      );
+      if (kDebugMode) {
+        print(response);
+      }
+
+    } on DioError catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+```
