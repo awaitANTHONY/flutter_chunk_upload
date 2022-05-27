@@ -59,7 +59,7 @@ Dio and ChunkedUploader:
 ```dart
 upload() async {
     if (_paths == null) {
-      showToast('Select a file first.');
+      print('Select a file first.');
     }
     var path = _paths![0].path!;
     String fileName = path.split('/').last;
