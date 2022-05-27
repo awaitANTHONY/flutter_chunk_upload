@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String? _extension;
   double progress = 0.0;
   String link = '';
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -47,6 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _pickFiles() async {
+    setState(() {
+      link = '';
+      isLoading = true;
+    });
     try {
       _paths = (await FilePicker.platform.pickFiles(
         type: FileType.any,
@@ -65,13 +70,14 @@ class _MyHomePageState extends State<MyHomePage> {
       if (kDebugMode) {
         print(e.toString());
       }
+    } finally {
+      isLoading = false;
+
+      setState(() {});
     }
   }
 
   upload() async {
-    setState(() {
-      link = '';
-    });
     if (_paths == null) {
       showToast('Select a file first.');
     }
@@ -113,13 +119,18 @@ class _MyHomePageState extends State<MyHomePage> {
       }
 
       var data = response?.data;
-      if (data != null && data['status'] == true) {
-        setState(() {
+      if (data != null) {
+        if (data['status'] == true) {
           link = data['link'];
-          progress = 0.0;
-        });
+        }
         showToast(data['message']);
+      } else {
+        showToast('Unknown error.');
       }
+      setState(() {
+        _paths = null;
+        progress = 0.0;
+      });
     } on DioError catch (e) {
       if (kDebugMode) {
         print(e);
@@ -146,12 +157,13 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('Select File'),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                upload();
-              },
-              child: const Text('Upload'),
-            ),
+            if ((_paths?.length ?? 0) > 0)
+              ElevatedButton(
+                onPressed: () {
+                  upload();
+                },
+                child: const Text('Upload'),
+              ),
             if (progress > 0)
               Padding(
                 padding: const EdgeInsets.all(8.0),
