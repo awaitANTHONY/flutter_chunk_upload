@@ -244,3 +244,7 @@ protected function createFilename(UploadedFile $file)
     return $filename;
 }
 ```
+
+## Contact
+
+For more quires Mail awaitanthony@gmail.com
