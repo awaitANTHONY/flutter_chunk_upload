@@ -63,7 +63,7 @@ upload() async {
     }
     var path = _paths![0].path!;
     String fileName = path.split('/').last;
-    String url = 'https://awaitanthony.com/demo/api/v1/file_upload';
+    String url = 'https://awaitanthony.com/demo/api/v1/file_upload'; // change it with your api url
     ChunkedUploader chunkedUploader = ChunkedUploader(
       Dio(
         BaseOptions(
