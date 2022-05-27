@@ -1,6 +1,9 @@
 # Flutter Chunk Upload
 
-A new Flutter project.
+Hi,
+
+We all face a lot of problems when it comes to uploading a large files to server using #flutter.
+so I tried to help all by researching how to upload large files to server using #flutter and #Laravel(php) backend.
 
 ## Getting Started
 
@@ -8,5 +11,6 @@ A new Flutter project.
 
 ```yaml
 dependencies:
-  dio: ^4.0.6
+  dio: latest
+  chunked_uploader: latest
 ```
